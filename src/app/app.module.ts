@@ -36,6 +36,7 @@ import { TestComponent } from './Ag grid Dashboard/test.component';
 import { ActionButtonComponent } from './action-button/action-button.component';
 import { DashboardTooltipComponent } from './dashboard-tooltip/dashboard-tooltip.component';
 import { DatePipe } from '@angular/common';
+import { DatecustomComponent } from './datecustom/datecustom.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,6 +49,7 @@ import { DatePipe } from '@angular/common';
     ConfirmationDialogComponent,
     ActionButtonComponent,
     DashboardTooltipComponent,
+    DatecustomComponent,
     
   ],
   imports: [

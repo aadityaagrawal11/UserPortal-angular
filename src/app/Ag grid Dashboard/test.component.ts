@@ -11,6 +11,7 @@ import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation
 import { forkJoin } from 'rxjs';
 import { DashboardTooltipComponent } from '../dashboard-tooltip/dashboard-tooltip.component';
 import { DatePipe } from '@angular/common';
+import { DatecustomComponent } from '../datecustom/datecustom.component';
 
 
 
@@ -51,14 +52,13 @@ export class TestComponent implements OnInit {
       headerName: "First Name", field: "firstname", headerCheckboxSelection: true,
       checkboxSelection: true, cellStyle: { fontWeight: 'bold' }, cellRenderer: DashboardTooltipComponent
     },
-    { headerName: "Last Name", field: "lastname", cellRenderer: DashboardTooltipComponent},
-    { headerName: "Email ID", field: "email" , cellRenderer: DashboardTooltipComponent},
-    { headerName: "Password", field: "password" , cellRenderer: DashboardTooltipComponent},
+    { headerName: "Last Name", field: "lastname", cellRenderer: DashboardTooltipComponent },
+    { headerName: "Email ID", field: "email", cellRenderer: DashboardTooltipComponent },
+    { headerName: "Password", field: "password", cellRenderer: DashboardTooltipComponent },
     {
-      headerName: "Date of Birth", field: "picker", 
-      cellRenderer:  (params:any)=>{
-        return formatDate(params.value, 'd MMM yyyy', this.locale)}
-       },
+      headerName: "Date of Birth", field: "picker",
+      cellRenderer: DatecustomComponent
+    },
     { headerName: "Action", field: "action", cellRenderer: ActionButtonComponent, width: 235, autoHeight: true }
   ];
   dateValueFormatter(params: any): string {
@@ -132,13 +132,13 @@ export class TestComponent implements OnInit {
 
     })
   }
-  
-  selectedUserIds:any;
+
+  selectedUserIds: any;
   deleteSelectedRows() {
     const selectedNodes = this.gridApi.getSelectedNodes();
     this.selectedUserIds = selectedNodes.map((node: any) => node.data.id);
     this.deletepopup();
-   
+
   }
 
   onSelectionChanged() {
