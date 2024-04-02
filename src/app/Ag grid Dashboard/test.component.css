@@ -1,0 +1,22 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  
+.center{
+    margin-left:5%;
+    margin-top:25px;
+   }
+
+   .filter{
+    width: 500px;
+    /* margin-left:10%; */
+   }
+   .btn{
+    margin-left:48%;
+    
+   
+  }
+.ag-header-cell{
+  background-color: black !important;
+  color:white;
+}

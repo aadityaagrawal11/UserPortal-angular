@@ -1,0 +1,88 @@
+<div class="header">
+    <h1 style="color: white;" mat-dialog-title >Add User</h1>
+    <span class="close-button topright">
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon fontIcon="close-button"></mat-icon>
+        </button>
+    </span>
+</div>
+<form [formGroup]="AddUserForm" (ngSubmit)="addUser(AddUserForm)">
+
+    <div mat-dialog-content>
+
+        <mat-form-field> 
+            <mat-label>FirstName</mat-label>
+            <input matInput formControlName="firstname">
+            <span *ngIf="AddUserForm.get('firstname')?.invalid && AddUserForm.get('firstname')?.touched ">
+                <small *ngIf="AddUserForm.get('firstname')?.errors?.['minlength']" style="color: red;">Minimum 3 characters
+                    are required.</small>
+                <small *ngIf="AddUserForm.get('firstname')?.errors?.['required']" style="color: red;">First Name is
+                    required.</small>
+                    
+            </span>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>LastName</mat-label>
+            <input matInput formControlName="lastname">
+            <span *ngIf="AddUserForm.get('lastname')?.invalid && AddUserForm.get('lastname')?.touched ">
+                <small *ngIf="AddUserForm.get('lastname')?.errors?.['required']" style="color: red;">Last Name is
+                    required.</small>
+                    <small *ngIf="AddUserForm.get('lastname')?.errors?.['minlength']" style="color: red;">Minimum 3 characters
+                        are required.</small>
+            </span>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>EmailID</mat-label>
+            <input matInput formControlName="email">
+            <span *ngIf="AddUserForm.get('email')?.invalid && AddUserForm.get('email')?.touched ">
+                <small *ngIf="AddUserForm.get('email')?.errors?.['required']" style="color: red;">Email ID is
+                    required.</small>
+                    <small *ngIf="AddUserForm.get('email')?.errors?.['pattern']" style="color: red;">Invalid Mail ID. </small>
+            </span>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <span *ngIf="AddUserForm.get('password')?.invalid && AddUserForm.get('password')?.touched ">
+                <small *ngIf="AddUserForm.get('password')?.errors?.['required']" style="color: red;">Password is
+                    required.</small>
+            </span>
+        </mat-form-field>
+
+        <!-- Date Picker -->
+        <mat-form-field>
+            <mat-label>Enter DOB</mat-label>
+            <input matInput [matDatepicker]="picker"  [max]="today" formControlName="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix  [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker ></mat-datepicker>
+            <span *ngIf="AddUserForm.get('picker')?.invalid && AddUserForm.get('picker')?.touched ">
+                <small *ngIf="AddUserForm.get('picker')?.errors?.['required']" style="color: red;">DOB is required.</small>
+            </span>
+        </mat-form-field>
+
+
+        <!-- Time Picker   -->
+        <!-- <div class="form-group" style="z-index: 5;">
+    <label class="form-label" for="timepicker">Time</label><br>
+    <input [ngxTimepicker]="timepicker" formControlName="timepicker" style="z-index: 5;">
+     <ngx-material-timepicker #timepicker></ngx-material-timepicker>
+</div>  -->
+
+
+
+    </div>
+
+    <div mat-dialog-actions class="btn">
+        <button [disabled]="!AddUserForm.valid" type="submit" class="btn-inside" mat-raised-button color="accent">Save</button>
+        <button type="button" mat-raised-button [mat-dialog-close]="false" class="btn-inside"
+            color="warn">Cancel</button>
+    </div>
+</form>

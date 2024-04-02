@@ -1,0 +1,73 @@
+<div class="header">
+    <h1 style="color: white;font-weight: bold;" mat-dialog-title>Edit User</h1>
+    <span class="close-button topright">
+        <button mat-icon-button mat-dialog-close>
+            <mat-icon fontIcon="close-button"></mat-icon>
+        </button>
+    </span>
+</div>
+
+<form [formGroup]=" editForm">
+    <div mat-dialog-content>
+
+        <mat-form-field>
+            <mat-label>FirstName</mat-label>
+            <input matInput formControlName="firstname">
+            <span *ngIf="editForm.get('firstname')?.invalid && editForm.get('firstname')?.touched ">
+                <small *ngIf="editForm.get('firstname')?.errors?.['minlength']" style="color: red;">Minimum 3 characters
+                    are required.</small>
+                <small *ngIf="editForm.get('firstname')?.errors?.['required']" style="color: red;">First Name is
+                    required.</small>
+                    
+            </span>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>LastName</mat-label>
+            <input matInput formControlName="lastname">
+            <span *ngIf="editForm.get('lastname')?.invalid && editForm.get('lastname')?.touched ">
+                <small *ngIf="editForm.get('lastname')?.errors?.['required']" style="color: red;">Last Name is
+                    required.</small>
+                    <small *ngIf="editForm.get('lastname')?.errors?.['minlength']" style="color: red;">Minimum 3 characters
+                        are required.</small>
+            </span>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label> EmailID</mat-label>
+            <input matInput formControlName="email">
+            <span *ngIf="editForm.get('email')?.invalid && editForm.get('email')?.touched ">
+                <small *ngIf="editForm.get('email')?.errors?.['required']" style="color: red;">Email ID is
+                    required.</small>
+                    <small *ngIf="editForm.get('email')?.errors?.['pattern']" style="color: red;">Invalid Mail ID. </small>
+            </span>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Password </mat-label>
+            <input matInput formControlName="password">
+            <span *ngIf="editForm.get('password')?.invalid && editForm.get('password')?.touched ">
+                <small *ngIf="editForm.get('password')?.errors?.['required']" style="color: red;">Password is
+                    required.</small>
+            </span>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Enter DOB</mat-label>
+            <input matInput [matDatepicker]="picker" [max]="today" formControlName="picker">
+            <mat-hint>MM/DD/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <span *ngIf="editForm.get('picker')?.invalid && editForm.get('picker')?.touched ">
+                <small *ngIf="editForm.get('picker')?.errors?.['required']" style="color: red;">DOB is required.</small>
+            </span>
+        </mat-form-field>
+    </div>
+
+    <div mat-dialog-actions class="btn">
+        <button [disabled]="!editForm.valid" type="submit" mat-raised-button class="btn-inside"
+            (click)="editSubmission()" color="accent">Update</button>
+        <button type="button" mat-raised-button [mat-dialog-close]="false" class="btn-inside"
+            color="warn">Cancel</button>
+    </div>
+</form>

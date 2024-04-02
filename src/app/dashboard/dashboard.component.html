@@ -1,0 +1,105 @@
+<p>
+  <mat-toolbar color="primary">
+
+    <span>My Dashboard</span>
+    <span class="example-spacer"></span>
+    <button class="m-5" mat-raised-button color="accent" (click)="addpopup()"> Add User (+) </button>
+    <button routerLink="/login" mat-raised-button color="warn" (click)="logout()"> Logout </button>
+
+  </mat-toolbar>
+</p>
+
+
+<mat-card>
+  <mat-card-header>
+    <mat-form-field>
+      <input matInput (keyup) = "Filterchange($event)" placeholder="Enter search text" class="filter">
+    </mat-form-field>
+  </mat-card-header>
+
+  <mat-card-content>
+    <table mat-table matSort [dataSource]="dataSource" class="mat-elevation-z8">
+      
+    
+      <ng-container matColumnDef="check"  style="background-color: white;">
+        <th mat-header-cell *matHeaderCellDef> <mat-checkbox  (change)="toggleAllSelection($event)"></mat-checkbox> </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-checkbox [checked]="isSelected(element.id)" (change)="toggleSelection(element.id)"></mat-checkbox> </td>
+      </ng-container>
+
+      <ng-container matColumnDef="firstname">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> First Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.firstname}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="lastname">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Last Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.lastname}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th  mat-sort-header mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="password">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> Password </th>
+        <td mat-cell *matCellDef="let element"> {{element.password}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="picker">
+        <th mat-sort-header mat-header-cell *matHeaderCellDef> DOB </th>
+        <td mat-cell *matCellDef="let element"> {{element.picker |date: 'dd/MMM/yyyy'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="action">
+        
+        <th class='delete' mat-header-cell *matHeaderCellDef> Actions 
+          <button class="btn" mat-raised-button (click)="deletepopup(selectedUserIds)" [disabled]="selectedUserIds.length === 0" color="warn">Delete Users</button>
+        </th>
+        <td mat-cell *matCellDef="let element">
+         
+          <button mat-raised-button matTooltip="Edit User" color="primary" (click)="editpopup(element)" [disabled]="selectedUserIds.length > 1"> <mat-icon>edit</mat-icon>Edit</button>
+          <button mat-raised-button matTooltip="Delete User" color="warn" (click)=" deleteButton(element)"
+          [disabled]="selectedUserIds.length > 1"><mat-icon>delete</mat-icon>Delete</button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+    </table>
+  </mat-card-content>
+  <br />
+
+  <mat-card-footer>
+    <mat-paginator [pageSizeOptions]="[5,10,15]" showFirstLastButtons></mat-paginator>
+  </mat-card-footer>
+
+</mat-card> 
+
+
+
+<!-- <table class="table table-striped mx-3 text-center ">
+    <thead>
+      <tr>
+        <th scope="col"  *ngFor="let header of displayedColumns">{{header}}</th>
+       <th  class="text-center"> Actions</th>
+      </tr>
+    </thead>
+    <tbody >
+      <tr  *ngFor="let val of registerUserArr">
+        
+        <td >{{val.firstname}} </td>
+        <td >{{val.lastname}} </td>
+        <td >{{val.email}} </td>
+        <td >{{val.password}} </td>    
+        <td >{{val.picker |date: 'dd/MMM/yyyy'}} , {{val.timepicker}} </td>
+        <td> <button type="button" class=" btn btn-info m-1" (click)="editpopup(val)">Edit</button>
+        <button type="button" class=" btn btn-danger m-1" (click)=" deletepopup(val)">Delete</button></td>
+      </tr>
+   
+      
+      
+    </tbody>
+  </table> -->

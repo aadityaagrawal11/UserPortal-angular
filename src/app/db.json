@@ -1,0 +1,44 @@
+{
+  "registerUser": [
+    {
+      "id": "7936",
+      "firstname": "seema",
+      "lastname": "singh",
+      "email": "seema@gmail.com",
+      "password": "2121`",
+      "picker": "2001-02-28T18:30:00.000Z"
+    },
+    {
+      "id": "355f",
+      "firstname": "Pradeep",
+      "lastname": "singh",
+      "email": "pradeep@gmail.com",
+      "password": "1234",
+      "picker": "1999-12-31T18:30:00.000Z"
+    },
+    {
+      "id": "f3fa",
+      "firstname": "arnab",
+      "lastname": "singh",
+      "email": "arnab@gmail.com",
+      "password": "123",
+      "picker": "2000-12-31T18:30:00.000Z"
+    },
+    {
+      "id": "0ca3",
+      "firstname": "Aditya",
+      "lastname": "Agrawal",
+      "email": "aaditya@gmail.com",
+      "password": "12345",
+      "picker": "2000-12-31T18:30:00.000Z"
+    },
+    {
+      "id": "b438",
+      "firstname": "ankit",
+      "lastname": "ojha",
+      "email": "ankit@gmail.com",
+      "password": "121",
+      "picker": "1989-04-13T18:30:00.000Z"
+    }
+  ]
+}

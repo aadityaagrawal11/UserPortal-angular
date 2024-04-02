@@ -1,0 +1,31 @@
+<p>
+  <mat-toolbar color="primary">
+
+    <span>My Dashboard</span>
+    <span class="example-spacer"></span>
+    <button class="m-5" mat-raised-button color="accent" (click)="addpopup()"> Add User (+) </button>
+    <button routerLink="/login" mat-raised-button color="warn"> Logout </button>
+
+  </mat-toolbar>
+</p>
+<div class="center">
+  <span>
+  <mat-form-field class="filter">
+    <input matInput placeholder="Enter search value" (keyup)="Filterchange($event)"/>
+      </mat-form-field>
+      
+  <button class="btn" mat-raised-button (click)="deleteSelectedRows()" [disabled]="isDeleteButtonDisabled"  color="warn">Delete Users</button>
+</span>
+  <!-- (rowSelected)="getRowIndex($event)" [disabled]="selectedUserIds.length === 0" -->
+      
+  <ag-grid-angular [class]="themeClass" style="width: 1250px; height: 400px;" [rowData]="registerUserArr"
+    [columnDefs]="colDefs" [animateRows]="true" (gridReady)="onGridReady($event)" 
+    [defaultColDef]="defaultColDef"
+    [rowSelection]="rowSelection" 
+    (selectionChanged)="onSelectionChanged()"
+    [rowMultiSelectWithClick]="true"
+    [pagination]="pagination" [paginationPageSize]="paginationPageSize"
+    [paginationPageSizeSelector]="paginationPageSizeSelector">
+  </ag-grid-angular>
+
+</div>

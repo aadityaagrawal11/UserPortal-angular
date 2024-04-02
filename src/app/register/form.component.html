@@ -1,0 +1,103 @@
+<h2 class="text-uppercase text-center mb-5 mt-5">User Registration</h2>
+
+<div class="container ">
+
+    <!-- {{registerForm.value | json}} -->
+    <form [formGroup]="registerForm" (ngSubmit)="submit(registerForm)">
+
+        <div class="form-group">
+            <label class="form-label" for="firstname">FirstName</label><br>
+            <input type="text" name="firstname" class="form-control form-control-lg" formControlName="firstname">
+
+
+            <span *ngIf="firstname && firstname.invalid && (firstname.dirty || firstname.touched)"
+                class="alert text-danger">
+                <small *ngIf="firstname.errors?.['required']">First Name is required.</small>
+                <small *ngIf="firstname.errors?.['minlength']"> First Name must be at least 3 characters long.</small>
+                <small *ngIf="firstname.errors?.['pattern']">Invalid First Name.</small>
+
+            </span>
+        </div>
+        <pre></pre>
+
+        <div class="form-group">
+            <label class="form-label" for="lastname">LastName</label><br>
+            <input type="text" name="lastname" class="form-control form-control-lg" formControlName="lastname">
+            <span *ngIf="lastname && lastname.invalid && (lastname.dirty || lastname.touched)"
+                class="alert text-danger">
+                <small *ngIf="lastname.errors?.['required']">Last Name is required.</small>
+                <small *ngIf="lastname.errors?.['minlength']"> Last Name must be at least 3 characters long.</small>
+                <small *ngIf="lastname.errors?.['pattern']">Invalid Last Name.</small>
+
+            </span>
+        </div>
+
+        <pre></pre>
+
+        <div class="form-group">
+            <label class="form-label" for="email">EmailID</label><br>
+            <input type="text" name="email" class="form-control form-control-lg" formControlName="email">
+           
+            <span *ngIf="email && email.invalid && (email.dirty || email.touched)" class="alert text-danger">
+                <small *ngIf="email.errors?.['required']">Email Id is required.</small>
+                <small *ngIf="email.errors?.['pattern']">Invalid Email Id.</small>
+
+            </span>
+        </div>
+
+        <pre></pre>
+
+        <div class="form-group">
+            <label class="form-label" for="password">Password</label><br>
+            <input type="password" name="password" class="form-control form-control-lg" formControlName="password">
+            <span *ngIf="password && password.invalid && (password.dirty || password.touched)"
+                class="alert text-danger">
+                <small *ngIf="password.errors?.['required']">Password is required.</small>
+            </span>
+        </div>
+
+        <pre></pre>
+
+        <div class="form-group">
+            <label class="form-label" for="confirmPassword">Confirm Password</label><br>
+            <input type="password" name="confirmPassword" class="form-control form-control-lg"
+                formControlName="confirmPassword">
+            <!-- <span *ngIf="confirmPassword && confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)" class="alert text-danger"> -->
+            <!-- <small class="alert text-danger" *ngIf="confirmPassword && confirmPassword.errors?.['required']" >Confirm Password is required.</small>  -->
+            <small class="alert text-danger" *ngIf="registerForm.errors?.['misMatch']">Password doesn't match.</small>
+
+        </div>
+
+        <pre></pre>
+        <!-- Date Picker   -->
+        <div class="form-group">
+            <label class="form-label" for="picker">DOB</label><br>
+            <mat-form-field>
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker" [max]="today" formControlName="picker">
+                <mat-hint>MM/DD/YYYY</mat-hint>
+                <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+
+    <!-- Time Picker   -->
+            <!-- <div class="form-group">
+                <label class="form-label" for="timepicker">Time</label><br>
+                <input [ngxTimepicker]="timepicker" [value]="currentTime" formControlName="timepicker">
+                 <ngx-material-timepicker #timepicker></ngx-material-timepicker>
+            </div> -->
+        </div>
+       
+        <pre></pre>
+        <button [disabled]="registerForm.invalid" class=" btn btn-success btn-block btn-lg mb-2 ms-2 mt-1" id="submit"
+            type="submit"> Register
+        </button>
+        <!-- [disabled]="registerForm.invalid" -->
+
+        <p class="text-center text-muted mt-2 mb-1">Have already an account? <a routerLink="/login"
+                routerLinkActive="active" class="fw-bold text-body"><u>Login here</u></a></p>
+
+
+    </form>
+
+</div>

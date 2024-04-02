@@ -1,0 +1,36 @@
+ 
+
+ 
+.container{
+  border: 3px solid;
+  border-radius: 3%;
+  
+  background: linear-gradient(to right, rgba(128, 179, 147, 0.5), rgba(51, 166, 223, 0.5));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  width: max-content;
+} 
+
+input{
+  width:500px;
+  margin:2px;
+}
+label{
+    text-align: left;
+    margin-top: 1px;
+}
+.form-group {
+  margin-top: 11px;
+}
+
+ /* input {
+    width:700px;
+    display: inline-block;
+  }   */
+
+  .margin { 
+    margin:20px;
+    padding:10px;
+}  

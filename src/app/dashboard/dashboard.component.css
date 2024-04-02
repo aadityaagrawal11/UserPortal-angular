@@ -1,0 +1,24 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+  
+mat-card{
+  margin:2%;
+  
+}
+button{
+  margin:2%;
+}
+ th{
+  background-color: black !important;
+  color:white;
+ } 
+ /* table{
+  background-color: white;
+ } */
+ mat-form-field{
+  width:100%
+}
+.btn{
+  margin-left:16%;
+}
