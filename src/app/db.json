@@ -1,14 +1,6 @@
 {
   "registerUser": [
     {
-      "id": "7936",
-      "firstname": "seema",
-      "lastname": "singh",
-      "email": "seema@gmail.com",
-      "password": "2121`",
-      "picker": "2001-02-28T18:30:00.000Z"
-    },
-    {
       "id": "355f",
       "firstname": "Pradeep",
       "lastname": "singh",

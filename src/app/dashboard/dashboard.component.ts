@@ -12,6 +12,7 @@ import { forkJoin, Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../service/auth.service';
 import { ColDef } from 'ag-grid-community';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-dashboard',
@@ -30,15 +31,16 @@ export class DashboardComponent {
   constructor(
     private _userService: UserdataService,
     private _authService: AuthService,
+    private http:HttpClient,
     private toastr: ToastrService,
     private editDialog: MatDialog,
     private addDialog: MatDialog,
     private deleteDialog: MatDialog) { }
 
 
-
   ngOnInit(): void {
     this.getUserList();
+  
   }
 
   logout() {
